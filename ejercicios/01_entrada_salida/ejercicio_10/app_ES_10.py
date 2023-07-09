@@ -47,9 +47,26 @@ class App(customtkinter.CTk):
         '''
         txt_importe_float = float(self.txt_importe.get())
         txt_descuento_float = float(self.txt_descuento.get())
-        descuento_importe = txt_importe_float * (txt_descuento_float/100)
+        descuento_importe = txt_importe_float * txt_descuento_float / 100
         importe_actualizado = txt_importe_float - descuento_importe
         alert(title='Importe actualizado', message= importe_actualizado)
+
+        '''
+        CLASE DE APOYO SÁBADOS
+        '''
+        '''
+        importe = self.txt_importe.get()
+        importe = float(importe)
+        descuento = self.txt_descuento.get()
+        descuento = int(descuento)
+        importe_con_descuento = importe - (importe * descuento / 100)
+        # si me pide cual es el descuento hago
+        #importe_descuento = (importe * descuento / 100)
+        alert(title = "UTN", message = importe_con_descuento)
+        '''
+        
+
+
         
     
 if __name__ == "__main__":

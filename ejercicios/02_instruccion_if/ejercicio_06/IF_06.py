@@ -5,8 +5,8 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
-nombre:
-apellido:
+nombre: FABRICIO
+apellido: DE SA TORRES
 ---
 Ejercicio: instrucion_if_06
 ---
@@ -36,7 +36,25 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        pass
+        '''
+        Enunciado:
+        Al presionar el botón  'Calcular', se deberá obtener contenido en la caja de texto txtEdad, 
+        transformarlo en número y calcular si es mayor, niño/a(menor de 10) o pre-adolescente 
+        (edad entre 10 y 13 años) o adolescente (edad entre 13 y 17 años) de edad, 
+        se deberá informar utilizando el Dialog alert.
+        '''
+        edad_texto = self.txt_edad.get()
+        edad_numero = int(edad_texto)
+        if edad_numero >= 18:
+            mensaje = 'MAYOR'
+        elif edad_numero < 10:
+            mensaje = 'NIÑO/A'
+        elif edad_numero >= 10 and edad_numero < 13:
+            mensaje = 'PRE-ADOLESCENTE'
+        elif edad_numero >= 13 and edad_numero <= 17:
+            mensaje = 'ADOLESCENTE'
+        alert(title='Informe', message= mensaje)
+        
 
         
         
