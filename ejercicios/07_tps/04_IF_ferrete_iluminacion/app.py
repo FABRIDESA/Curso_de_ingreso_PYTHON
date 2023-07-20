@@ -5,11 +5,19 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
+nombre: FABRICIO
+apellido: DE SA TORRES
+---
+Ejercicio: TP4
+'''
+'''
 Todas las lámparas están  al mismo precio de $800 pesos final.
 		A.	Si compra 6 o más  lamparitas bajo consumo tiene un descuento del 50%. 
 		B.	Si compra 5  lamparitas bajo consumo marca "ArgentinaLuz" se hace un descuento del 40 % y si es de otra marca el descuento es del 30%.
-		C.	Si compra 4  lamparitas bajo consumo marca "ArgentinaLuz" o “FelipeLamparas” se hace un descuento del 25 % y si es de otra marca el descuento es del 20%.
-		D.	Si compra 3  lamparitas bajo consumo marca "ArgentinaLuz"  el descuento es del 15%, si es  “FelipeLamparas” se hace un descuento del 10 % y si es de otra marca un 5%.
+		C.	Si compra 4  lamparitas bajo consumo marca "ArgentinaLuz" o “FelipeLamparas” se hace un descuento del 25 % y si es de otra marca el 
+        descuento es del 20%.
+		D.	Si compra 3  lamparitas bajo consumo marca "ArgentinaLuz"  el descuento es del 15%, si es  “FelipeLamparas” se hace un descuento del 10 % 
+        y si es de otra marca un 5%.
 		E.	Si el importe final con descuento suma más de $4000  se obtien un descuento adicional de 5%.
 '''
 
@@ -38,9 +46,63 @@ class App(customtkinter.CTk):
 
 
     def btn_calcular_on_click(self):
-        pass
+        #A.	Si compra 6 o más  lamparitas bajo consumo tiene un descuento del 50%.
+        marca = self.combobox_marca.get()
+        cantidad = int(self.combobox_cantidad.get())
+        precio_unidad = 800
+        importe_final = precio_unidad * cantidad
         
-    
+        if cantidad >= 6:
+            descuento = importe_final * 50 / 100
+            importe_final = importe_final - descuento
+            mensaje = str(importe_final)
+            
+        #B. Si compra 5  lamparitas bajo consumo marca "ArgentinaLuz" se hace un descuento del 40 % y si es de otra marca el descuento es del 30%.
+        elif cantidad == 5: 
+            if marca == "ArgentinaLuz":
+                descuento = importe_final * 40 / 100
+                importe_final = importe_final - descuento
+                mensaje = str(importe_final)
+            else:
+                descuento = importe_final * 30 / 100
+                importe_final = importe_final - descuento
+                mensaje = str(importe_final)
+        #C.	Si compra 4  lamparitas bajo consumo marca "ArgentinaLuz" o “FelipeLamparas” se hace un descuento del 25 % y si es de otra marca el descuento 
+        # es del 20%.
+        elif cantidad == 4:
+            if marca == "ArgentinaLuz" or marca == "FelipeLamparas":
+                descuento = importe_final * 25 / 100
+                importe_final = importe_final - descuento
+                mensaje = str(importe_final)
+            else:
+                descuento = importe_final * 20 / 100
+                importe_final = importe_final - descuento
+                mensaje = str(importe_final)
+        #D.	Si compra 3  lamparitas bajo consumo marca "ArgentinaLuz"  el descuento es del 15%, si es  “FelipeLamparas” se hace un descuento del 10 % 
+        #y si es de otra marca un 5%.
+        elif cantidad == 3:
+            if marca == "ArgentinaLuz":
+                descuento = importe_final * 15 / 100
+                importe_final = importe_final - descuento
+                mensaje = str(importe_final)
+            elif marca == "FelipeLamparas":
+                descuento = importe_final * 10 / 100
+                importe_final = importe_final - descuento
+                mensaje = str(importe_final)
+            else:
+                descuento = importe_final * 5 / 100
+                importe_final = importe_final - descuento
+                mensaje = str(importe_final)
+        #E.	Si el importe final con descuento suma más de $4000  se obtien un descuento adicional de 5%.
+        if importe_final > 4000:
+                descuento = importe_final * 5 / 100
+                importe_final = importe_final - descuento
+                mensaje = str(importe_final)
+        else:
+            mensaje = str(importe_final)
+        
+        alert(title='Importe Final', message= mensaje)
+
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")

@@ -3,8 +3,14 @@ from tkinter.messagebox import showinfo as alert
 from tkinter.messagebox import askyesno as question
 from tkinter.simpledialog import askstring as prompt
 import customtkinter
+import datetime
 
-
+'''
+NOMBRE: FABRICIO
+APELLIDO: DE SA TORRES
+---
+Ejercicio: match 3-5
+'''
 '''
 Enunciado:
 Obtener la hora ingresada en el txt_hora. Al presionar el botón ‘Informar’ 
@@ -30,7 +36,21 @@ class App(customtkinter.CTk):
         
     
     def btn_informar_on_click(self):
-        pass
+        '''
+        Enunciado:
+        Obtener la hora ingresada en el txt_hora. Al presionar el botón ‘Informar’ 
+        mostrar mediante alert el mensaje ‘Es de mañana’ 
+        si la hora ingresada está entre las 7 y las 11
+        '''
+        hora = int(self.txt_hora.get())
+        informar_flag = False #bandera
+        match hora:
+            case 7 | 8 | 9 | 10 | 11:
+                mensaje = 'Es de mañana'
+                informar_flag = True
+        if informar_flag:
+            alert(title='EJ 3-5', message= mensaje)
+
     
     
 if __name__ == "__main__":

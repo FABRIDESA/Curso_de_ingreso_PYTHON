@@ -4,7 +4,10 @@ from tkinter.messagebox import askyesno as question
 from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
-
+'''
+NOMBRE: FABRICIO
+APELLIDO: DE SA TORRES
+'''
 '''
 Enunciado:
 Obtener el valor del mes seleccionado en el combobox_mes y  
@@ -37,9 +40,54 @@ class App(customtkinter.CTk):
         
     
     def btn_informar_on_click(self):
-        pass
-    
-    
+        '''
+        TEORÍA
+        pais = prompt("Informar","Ingrese el pais de origen")
+        match pais:
+            case "Argentina" | "Uruguay" | "Paraguay":
+                impuesto = 5
+            case "Brasil":
+                impuesto = 20
+            case "Chile":
+                impuesto = 15
+            case "Peru":
+                impuesto = 25
+            
+            case _: #case other: (también pero no se usa en otros lenguajes)
+                impuesto = "No trabajamos con ese pais"
+        
+        print(impuesto)
+        '''
+        '''
+        Enunciado:
+        Obtener el valor del mes seleccionado en el combobox_mes y  
+        al presionar el botón ‘Informar’ mostrar mediante alert los siguientes mensajes 
+        en función del mes seleccionado:
+        Si el mes seleccionado es Enero: ‘que comiences bien el año!!!’
+        Si el mes seleccionado es Marzo: ‘a clases!!’
+        Si el mes seleccionado es Julio: ‘se vienen las vacaciones!!’
+        Si el mes seleccionado es Diciembre: ‘Felices fiestas!!!’
+
+        En caso de seleccionar un mes distinto a los mencionados, no hacer nada
+        '''
+        mes = self.combobox_mes.get()
+        informar_flag = False #bandera
+        match mes:
+            case 'Enero':
+                mensaje = 'que comiences bien el año!!!'
+                informar_flag = True
+            case 'Marzo':
+                mensaje = 'a clases!!'
+                informar_flag = True
+            case 'Julio':
+                mensaje = 'se vienen las vacaciones!!'
+                informar_flag = True
+            case 'Diciembre':
+                mensaje = 'Felices fiestas!!!'
+                informar_flag = True
+        if informar_flag:
+            alert(title='EJ 3-1', message= mensaje)
+
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")

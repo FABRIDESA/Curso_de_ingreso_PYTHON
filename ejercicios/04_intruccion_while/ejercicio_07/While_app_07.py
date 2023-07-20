@@ -4,13 +4,19 @@ from tkinter.messagebox import askyesno as question
 from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
+
+'''
+NOMBRE: FABRICIO
+APELLIDO: DE SA TORRES
+---
+ejercicio: 4-7
+'''
 '''
 Enunciado:
 Al presionar el botón ‘Comenzar ingreso’, solicitar mediante prompt todos los números que el usuario quiera, 
 hasta que presione el botón Cancelar (en el prompt). 
 Calcular la suma acumulada y el promedio de los números ingresados. 
 Luego informar los resultados en las cajas de texto txt_suma_acumulada y txt_promedio
-
 '''
 
 class App(customtkinter.CTk):
@@ -32,9 +38,33 @@ class App(customtkinter.CTk):
 
 
     def btn_comenzar_ingreso_on_click(self):
-        pass
+        '''
+        Enunciado:
+        Al presionar el botón ‘Comenzar ingreso’, solicitar mediante prompt todos los números que el usuario quiera, 
+        hasta que presione el botón Cancelar (en el prompt). 
+        Calcular la suma acumulada y el promedio de los números ingresados. 
+        Luego informar los resultados en las cajas de texto txt_suma_acumulada y txt_promedio
+        '''
+        resultado_prompt = 'si'
+        acumulador_numeros= 0
+        contador = 0
 
-    
+        while resultado_prompt != None: #cancelar devuelve None
+            numero = prompt(title='UTN', prompt='ingrese un numero')
+            numero = int(numero)
+            acumulador_numeros += numero
+            contador += 1
+            resultado_prompt = prompt(title='UTN', prompt='Desea seguir? si/no')
+        
+        promedio = acumulador_numeros / contador
+
+        self.txt_suma_acumulada.delete(0,10000)
+        self.txt_suma_acumulada.insert(0,acumulador_numeros)
+        self.txt_promedio.delete(0,10000)
+        self.txt_promedio.insert(0,promedio)
+
+        #CON UN SOLO PROMPT SERÍA MÁS COMPLEJO
+        
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")

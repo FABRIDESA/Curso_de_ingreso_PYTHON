@@ -4,13 +4,16 @@ from tkinter.messagebox import askyesno as question
 from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
-
+'''
+NOMBRE: FABRICIO
+APELLIDO: DE SA TORRES
+'''
 '''
 Enuciado:
 Al presionar el botón ‘Informar’ mostrar mediante alert los siguientes 
 mensajes en función del mes seleccionado:
-    Si es febrero: ‘Este mes no tiene más de 29 días’
-    Si no es febrero: ‘Este mes tiene 30 días o mas’
+Si es febrero: ‘Este mes no tiene más de 29 días’
+Si no es febrero: ‘Este mes tiene 30 días o mas’
 
 '''
 
@@ -33,7 +36,22 @@ class App(customtkinter.CTk):
         
     
     def btn_informar_on_click(self):
-        pass
+        '''
+        Enuciado:
+        Al presionar el botón ‘Informar’ mostrar mediante alert los siguientes 
+        mensajes en función del mes seleccionado:
+        Si es febrero: ‘Este mes no tiene más de 29 días’
+        Si no es febrero: ‘Este mes tiene 30 días o mas’
+        '''
+        mes = self.combobox_mes.get()
+        match mes:
+            case 'Febrero':
+                mensaje = 'Este mes no tiene más de 29 días'
+            case _:
+                mensaje = 'Este mes tiene 30 días o mas'
+        
+        alert(title= 'EJ 3-3', message= mensaje)
+
     
     
 if __name__ == "__main__":
